@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 
 <head>
     <meta charset="UTF-8">
@@ -9,8 +9,61 @@
 
 <body>
     <h1>Conversor de Moeda</h1>
-    <p>Voce deve usar a url para fazer as converções</p>
-    <p> exemplos para lhe ajudar</p>
+    <p>Use o formulário abaixo para criar uma URL para conversão de moeda:</p>
+
+    <form action="" id="converterForm">
+        <label for="deMoeda">Moeda de origem:</label>
+        <select id="deMoeda" name="fromCurrency">
+            <option value="USD">Dólar Americano (USD)</option>
+            <option value="EUR">Euro (EUR)</option>
+            <option value="GBP">Libra Esterlina (GBP)</option>
+            <option value="BRL">Real Brasileiro (BRL)</option>
+            <option value="BTC">Bitcoin (BTC)</option>
+            <option value="ETH">Ethereum (ETH)</option>
+        </select>
+        <br>
+
+        <label for="paraMoeda">Moeda de destino:</label>
+        <select id="paraMoeda" name="toCurrency">            
+            <option value="BRL">Real Brasileiro (BRL)</option>
+            <option value="EUR">Euro (EUR)</option>
+            <option value="GBP">Libra Esterlina (GBP)</option>
+            <option value="BTC">Bitcoin (BTC)</option>
+            <option value="ETH">Ethereum (ETH)</option>
+            <option value="USD">Dólar Americano (USD)</option>
+        </select>
+        <br>
+
+        <label for="montante">Montante:</label>
+        <input type="number" id="montante" name="amount">
+        <br>
+
+        <button type="button" onclick="gerarURL()">Gerar URL</button>
+    </form>
+
+    <h2 id="urlGerada"></h2>
+
+    <script>
+        function gerarURL() {
+            var deMoeda = document.getElementById("deMoeda").value;
+            var paraMoeda = document.getElementById("paraMoeda").value;
+            var montante = document.getElementById("montante").value;
+
+            if (deMoeda === paraMoeda) {
+                alert("A moeda de origem e a moeda de destino devem ser diferentes.");
+                return;
+            }
+
+            if (montante === "") {
+                alert("Por favor, insira um valor para o montante.");
+                return;
+            }
+
+            var url = "http://localhost:8000/convert?from=" + deMoeda + "&to=" + paraMoeda + "&amount=" + montante;
+
+            document.getElementById("urlGerada").innerText = "URL gerada: " + url;
+        }
+    </script>
 </body>
 
 </html>
