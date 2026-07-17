@@ -15,17 +15,17 @@ API para conversao de moedas em tempo real.
 - API de taxas de cambio
 
 ## Uso
-`ash
+```bash
 GET /api/convert?from=USD&to=BRL&amount=100
-`
+```
 
 ## Instalacao
-`ash
+```bash
 git clone https://github.com/Wsanbey/CurrencyConverterAPI.git
 cd CurrencyConverterAPI
 pip install -r requirements.txt
 python app.py
-`
+```
 
 ## Licenca
 MIT
